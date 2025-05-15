@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiagJet Final</title>
+  <style>
+    body { font-family: Arial; background: #f5faff; padding: 20px; color: #003366; }
+    .box { background: #fff; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    pre { background: #eef; padding: 10px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>DiagJet - Final Version</h2>
+    <button onclick="loadAMM()">Load AMM Data</button>
+    <pre id="output">Click to load data...</pre>
+  </div>
+  <script>
+    async function loadAMM() {
+      const res = await fetch('amm-data.json');
+      const data = await res.json();
+      document.getElementById('output').textContent = JSON.stringify(data.slice(0, 3), null, 2);
+    }
+  </script>
+</body>
+</html>
